@@ -1,29 +1,29 @@
 name: React CI pipeline
 
 on:
-    push:
-        branches:
-            - master
-            - main 
+  push:
+    branches:
+      - master
+      - main
 
 jobs:
-    build-and-test:
-       runs-on: ubuntu-latest
-       
-       steps:
-         - name: "Setup Node Js"
-           uses: actions/setup-node@v4
-           with: 
-              node-version: '21'
-           
-         - name: "Check node version"
-           run: node --version
-         
-         - name: "Clone the Repository"
-           run : actions/checkout@v4
+  build-and-test:
+    runs-on: ubuntu-latest
 
-         - name: " installing dependencies"
-           run: npm install
-           
+    steps:
+      
+      - name: "Checkout the repository"
+        uses: actions/checkout@v4
+
+
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '21'
+
+      - name: "Check node version"
+        run: node --version
+
    
-        
+      - name: "Install dependencies"
+        run: npm install
